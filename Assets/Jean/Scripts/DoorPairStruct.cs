@@ -14,10 +14,22 @@ public struct DoorPairStruct
     [SerializeField] private AudioClip pairMelodySlgithtlyDistorted;
     [SerializeField] private AudioClip pairMelodyHighlyDistorted;
 
+    [SerializeField] private bool isCollected;
+
+    public bool IsCollected { get => isCollected; }
+
     public void OpenPair()
     {
         door1.OpenDoor();
         door2.OpenDoor();
+
+        isCollected = true;
+    }
+
+    public void MakeInteractable()
+    {
+        door1.SetInteractable(true);
+        door2.SetInteractable(true);
     }
 
     public AudioClip GetMelodyType(DistortionLevel distortionLevel)
@@ -34,5 +46,5 @@ public struct DoorPairStruct
 
         throw new NotImplementedException("Couldnt get Melody with Distortion Type");
     }
-    
+
 }
