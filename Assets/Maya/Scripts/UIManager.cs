@@ -51,8 +51,8 @@ public class UIManager : MonoBehaviour
         SetCursorType(_cursorType);
         SceneManager.LoadSceneAsync((int)_scene, _loadMode);
 
-        if (_scene == Scenes.PauseMenu) Time.timeScale = 0f;    // Pause Game
-        else if (_scene == Scenes.MainMenu) Time.timeScale = 1f;
+        //if (_scene == Scenes.PauseMenu) Time.timeScale = 0f;    // Pause Game
+        //else if (_scene == Scenes.MainMenu) Time.timeScale = 1f;
     }
 
     public void UnloadSceneAsync(Scenes _scene, CursorTypes _cursorType = CursorTypes.UI)
@@ -61,7 +61,7 @@ public class UIManager : MonoBehaviour
         SetCursorType(_cursorType);
 
         // Continue TimeScale if Pause is closed
-        if (_scene == Scenes.PauseMenu) Time.timeScale = 1f;
+        //if (_scene == Scenes.PauseMenu) Time.timeScale = 1f;
     }
 
     public void SetCursorType(CursorTypes _cursorType)
