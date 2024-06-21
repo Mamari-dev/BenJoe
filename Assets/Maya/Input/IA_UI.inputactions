@@ -1,0 +1,34 @@
+{
+    "name": "IA_UI",
+    "maps": [
+        {
+            "name": "UI",
+            "id": "54ec512c-0c9c-43c5-affe-9d6908613c24",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Value",
+                    "id": "aedc3227-5947-4163-9a12-d0b81746b7f7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "09d3897d-8e1b-4b01-8453-0f68d836f4fe",
+                    "path": "Esc",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
