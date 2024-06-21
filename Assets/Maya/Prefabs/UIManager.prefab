@@ -84,8 +84,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: aedc3227-5947-4163-9a12-d0b81746b7f7
-    m_ActionName: UI/Pause
+    m_ActionId: 5c803adc-2a15-4074-892c-64c875e19a96
+    m_ActionName: UI/Test
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI

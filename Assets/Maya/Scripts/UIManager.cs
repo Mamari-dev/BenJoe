@@ -7,10 +7,11 @@ using UnityEngine.SceneManagement;
 public enum Scenes
 {
     MainMenu = 0,
-    Settings,
+    Options,
     LoadingScreen,
     HUD,
-    PauseMenu
+    PauseMenu,
+    Game
 }
 
 
@@ -86,11 +87,13 @@ public class UIManager : MonoBehaviour
     {
         if (_context.started)
         {
-            if (SceneManager.GetSceneByBuildIndex((int)Scenes.Settings).isLoaded) UnloadSceneAsync(Scenes.Settings);
+            // close
+            if (SceneManager.GetSceneByBuildIndex((int)Scenes.Options).isLoaded) UnloadSceneAsync(Scenes.Options);
             else if (SceneManager.GetSceneByBuildIndex((int)Scenes.PauseMenu).isLoaded) UnloadSceneAsync(Scenes.PauseMenu, CursorTypes.None);
+            
+            // open
+            else if (SceneManager.GetSceneByBuildIndex((int)Scenes.MainMenu).isLoaded) LoadSceneAsync(Scenes.Options, LoadSceneMode.Additive);
             else if (SceneManager.GetSceneByBuildIndex((int)Scenes.HUD).isLoaded) LoadSceneAsync(Scenes.PauseMenu, LoadSceneMode.Additive);
-
-            else if (SceneManager.GetSceneByBuildIndex((int)Scenes.MainMenu).isLoaded) LoadSceneAsync(Scenes.Settings, LoadSceneMode.Additive);
         }
     }
 
