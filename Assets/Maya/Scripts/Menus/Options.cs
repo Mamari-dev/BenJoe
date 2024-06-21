@@ -15,6 +15,7 @@ public class Options : MonoBehaviour
     [Header("Tabs")]
     [SerializeField] private Image[] tabButtons;
     [SerializeField] private GameObject[] tabContent;
+    [Tooltip("Tabs from the Arrays. Starts at 0.")]
     [SerializeField] private int firstSelectedTab = 0;
     private int selectedTab;
 
@@ -25,15 +26,13 @@ public class Options : MonoBehaviour
 
     private void Awake()
     {
-        StartCoroutine(Init());
+        Init();
     }
 
-    private IEnumerator Init()
+    private void Init()
     {
         for (int i = 0; i < tabContent.Length; i++)
             tabContent[i].SetActive(true);
-
-        yield return new WaitForSeconds(1f);
 
         // Select first Tab
         for (int i = 0; i < tabContent.Length; i++)
