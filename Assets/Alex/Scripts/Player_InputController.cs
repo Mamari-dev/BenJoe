@@ -1,13 +1,15 @@
 using UnityEngine;
-//using UnityEngine.InputSystem;
+using UnityEngine.InputSystem;
 
 public class Player_InputController : MonoBehaviour
 {
-    bool isUsingGamepad;
+    [SerializeField] Player player;
+
+    //bool isUsingGamepad;
 
     Vector2 moveDirection;
 
-    bool isActivelyAiming;
+    //bool isActivelyAiming;
     Vector2 aimDirection;
 
     bool holdAttack;
@@ -25,13 +27,13 @@ public class Player_InputController : MonoBehaviour
     //    Cursor.lockState = isUsingGamepad ? CursorLockMode.Locked : CursorLockMode.None;
     //}
     //
-    //public void OnMove(InputAction.CallbackContext _inputPhase)
-    //{
-    //    moveDirection = _inputPhase.ReadValue<Vector2>();
-    //
-    //    if(isUsingGamepad && !isActivelyAiming)
-    //        aimDirection = _inputPhase.ReadValue<Vector2>();
-    //}
+    public void OnMove(InputAction.CallbackContext _inputPhase)
+    {
+        moveDirection = _inputPhase.ReadValue<Vector2>();
+    
+        //if(isUsingGamepad && !isActivelyAiming)
+        //    aimDirection = _inputPhase.ReadValue<Vector2>();
+    }
     //
     //public void OnAim(InputAction.CallbackContext _inputPhase)
     //{
@@ -47,11 +49,11 @@ public class Player_InputController : MonoBehaviour
     //        isActivelyAiming = false;
     //}
     //
-    //public void OnDash(InputAction.CallbackContext _inputPhase)
-    //{
-    //    if (_inputPhase.performed)
-    //        player.StateMachine.SwitchState(player.StateMachine.StateDash);
-    //}
+    public void OnDash(InputAction.CallbackContext _inputPhase)
+    {
+        if (_inputPhase.performed)
+            StartCoroutine(player.DashController.StartDash());
+    }
     //
     //public void OnAttack(InputAction.CallbackContext _inputPhase)
     //{

@@ -13,16 +13,18 @@ public class Player_MovementController : MonoBehaviour
 
 
     [Space]
-    [SerializeField] Rigidbody2D rb;
-    [Space]
-    [SerializeField] Player_InputController characterInputController;
+    [SerializeField] Player player;
 
 
     void Awake() => currentMovementSpeed = movementSpeed;
 
-    void Update() => movementDirection = characterInputController.MoveDirection;
+    void Update()
+    {
+        if(!player.DashController.IsDashing)
+            movementDirection = player.InputController.MoveDirection;
+    }
 
-    void FixedUpdate() => rb.velocity = movementDirection * currentMovementSpeed;
+    void FixedUpdate() => player.Rigidbody.velocity = movementDirection * currentMovementSpeed;
 
     public void ChangeSpeed(float _speedMultiplicator) => currentMovementSpeed = movementSpeed * _speedMultiplicator;
 
