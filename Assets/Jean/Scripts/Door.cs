@@ -7,6 +7,10 @@ public class Door : MonoBehaviour, IInteract
     [SerializeField] private PairID pairID;
     [SerializeField] private PanoramaPart panoramaPart;
 
+    [SerializeField] private BoxCollider2D boxCollider;
+    [SerializeField] private Sprite missingPart;
+    [SerializeField] private Sprite panoSprite;
+
     private bool interactable;
 
     public void Interact()

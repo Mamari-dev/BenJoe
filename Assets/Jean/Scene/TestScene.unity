@@ -154,6 +154,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pairID: 1
   panoramaPart: 2
+  boxCollider: {fileID: 0}
+  missingPart: {fileID: 0}
+  panoSprite: {fileID: 0}
 --- !u!4 &238349840
 Transform:
   m_ObjectHideFlags: 0
@@ -230,6 +233,55 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3314269c15277ef428afe3a163a0db69, type: 3}
+--- !u!1 &669099044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 669099046}
+  - component: {fileID: 669099045}
+  m_Layer: 0
+  m_Name: Door
+  m_TagString: Door
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &669099045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669099044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a79b7511152c4140b23c9759240ad3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pairID: 1
+  panoramaPart: 1
+  boxCollider: {fileID: 0}
+  missingPart: {fileID: 0}
+  panoSprite: {fileID: 0}
+--- !u!4 &669099046
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669099044}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &956924451
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,6 +313,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pairID: 2
   panoramaPart: 2
+  boxCollider: {fileID: 0}
+  missingPart: {fileID: 0}
+  panoSprite: {fileID: 0}
 --- !u!4 &956924453
 Transform:
   m_ObjectHideFlags: 0
@@ -444,6 +499,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pairID: 2
   panoramaPart: 1
+  boxCollider: {fileID: 0}
+  missingPart: {fileID: 0}
+  panoSprite: {fileID: 0}
 --- !u!4 &1833492743
 Transform:
   m_ObjectHideFlags: 0
@@ -505,6 +563,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pairID: 1
   panoramaPart: 1
+  boxCollider: {fileID: 0}
+  missingPart: {fileID: 0}
+  panoSprite: {fileID: 0}
 --- !u!1001 &4472293255308421258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -573,3 +634,4 @@ SceneRoots:
   - {fileID: 956924453}
   - {fileID: 4472293255308421258}
   - {fileID: 361030590}
+  - {fileID: 669099046}
