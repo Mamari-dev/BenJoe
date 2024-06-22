@@ -25,7 +25,8 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    //private Vector3 cursorPosition;
+    public delegate void CollectMemoryPartEvent(PairID _pair, PanoramaPart _part);
+    public event CollectMemoryPartEvent CollectMemoryPart;
 
     private void Awake()
     {
@@ -79,12 +80,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void CollectMemoryPart(PairID _pair, PanoramaPart _part)
-    {
-
-    }
-
     #endregion
+
+    public void CollectMemoryPartUI(PairID _pair, PanoramaPart _part)
+    {
+        CollectMemoryPart.Invoke(_pair, _part);
+    }
 
     #region Input Handling
 
