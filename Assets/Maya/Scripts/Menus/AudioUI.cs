@@ -8,6 +8,8 @@ public class AudioUI : MonoBehaviour
     private bool masterOn;
     private bool musicOn;
     private bool soundOn;
+    private bool environmentOn;
+    private bool melodyOn;
 
     #region Input Handling
 
