@@ -44,6 +44,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: MissingObjectSprite
+    uniqueID: 1006878441
+    locked: 0
+  - name: PanoramaSprites
+    uniqueID: 697012133
+    locked: 0
   - name: RainEffects
     uniqueID: 3788374519
     locked: 0

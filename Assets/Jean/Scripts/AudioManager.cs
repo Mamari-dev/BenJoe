@@ -158,12 +158,16 @@ public class AudioManager : MonoBehaviour
 
         audioSourceAdLibs.clip = GetRandomSound("Environment");
         audioSourceAdLibs.Play();
+
+        isIdeling = true;
     }
 
     public void StopIdleSounds()
     {
         audioSourceEnvironment.Stop();
         audioSourceAdLibs.Stop();
+
+        isIdeling = true;
     }
 
     public void PlayCorrectSound()

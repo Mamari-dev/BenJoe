@@ -48,51 +48,51 @@ MonoBehaviour:
   doorPairs:
   - door1: {fileID: 0}
     door2: {fileID: 0}
-    pairMelodyClean: {fileID: 0}
-    pairMelodySlgithtlyDistorted: {fileID: 0}
-    pairMelodyHighlyDistorted: {fileID: 0}
+    pairMelodyClean: {fileID: 8300000, guid: 745fdae9fee6aa047acdb3b4fe532672, type: 3}
+    pairMelodySlgithtlyDistorted: {fileID: 8300000, guid: 90ccfabf324eaad4389bbb6190dac2b3, type: 3}
+    pairMelodyHighlyDistorted: {fileID: 8300000, guid: 21173fb958c958145b023636303aa4ea, type: 3}
     isCollected: 0
   - door1: {fileID: 0}
     door2: {fileID: 0}
-    pairMelodyClean: {fileID: 0}
-    pairMelodySlgithtlyDistorted: {fileID: 0}
-    pairMelodyHighlyDistorted: {fileID: 0}
+    pairMelodyClean: {fileID: 8300000, guid: 1e44f53dbf817924ea8abd6f658c2b77, type: 3}
+    pairMelodySlgithtlyDistorted: {fileID: 8300000, guid: c70db68c8f1e9784c9f13377573c93e5, type: 3}
+    pairMelodyHighlyDistorted: {fileID: 8300000, guid: cd5e0584af9cae246aaef387ee22a175, type: 3}
     isCollected: 0
   - door1: {fileID: 0}
     door2: {fileID: 0}
-    pairMelodyClean: {fileID: 0}
-    pairMelodySlgithtlyDistorted: {fileID: 0}
-    pairMelodyHighlyDistorted: {fileID: 0}
+    pairMelodyClean: {fileID: 8300000, guid: 8d5fcf2996c238a42bdee17a230690aa, type: 3}
+    pairMelodySlgithtlyDistorted: {fileID: 8300000, guid: 12fb82f9c0e14454f99ca39e0ac166fd, type: 3}
+    pairMelodyHighlyDistorted: {fileID: 8300000, guid: 6479674efc9ce6a4b85aceb6d01e29a8, type: 3}
     isCollected: 0
   - door1: {fileID: 0}
     door2: {fileID: 0}
-    pairMelodyClean: {fileID: 0}
-    pairMelodySlgithtlyDistorted: {fileID: 0}
-    pairMelodyHighlyDistorted: {fileID: 0}
+    pairMelodyClean: {fileID: 8300000, guid: 61c72104c5148c948ac7b00ca2c75160, type: 3}
+    pairMelodySlgithtlyDistorted: {fileID: 8300000, guid: cf477f301ad85f04a80a581ec0fa2731, type: 3}
+    pairMelodyHighlyDistorted: {fileID: 8300000, guid: 3e2024deb045bfb4eb751614abbbe293, type: 3}
     isCollected: 0
   - door1: {fileID: 0}
     door2: {fileID: 0}
-    pairMelodyClean: {fileID: 0}
-    pairMelodySlgithtlyDistorted: {fileID: 0}
-    pairMelodyHighlyDistorted: {fileID: 0}
+    pairMelodyClean: {fileID: 8300000, guid: 4b003e568ef82524c88374ec26002385, type: 3}
+    pairMelodySlgithtlyDistorted: {fileID: 8300000, guid: 8be79ea30c8147749a6e54e897ce7903, type: 3}
+    pairMelodyHighlyDistorted: {fileID: 8300000, guid: 0fe69ca6147e29a4d98ce694beed334a, type: 3}
     isCollected: 0
   - door1: {fileID: 0}
     door2: {fileID: 0}
-    pairMelodyClean: {fileID: 0}
-    pairMelodySlgithtlyDistorted: {fileID: 0}
-    pairMelodyHighlyDistorted: {fileID: 0}
+    pairMelodyClean: {fileID: 8300000, guid: 025ce0428119b3d4fae04f9e1b8fe0b3, type: 3}
+    pairMelodySlgithtlyDistorted: {fileID: 8300000, guid: 95951ba71a7834f4bb53bd56db25b8e4, type: 3}
+    pairMelodyHighlyDistorted: {fileID: 8300000, guid: de86be740f97d4d43a6ce1d326bd50a5, type: 3}
     isCollected: 0
   - door1: {fileID: 0}
     door2: {fileID: 0}
-    pairMelodyClean: {fileID: 0}
-    pairMelodySlgithtlyDistorted: {fileID: 0}
-    pairMelodyHighlyDistorted: {fileID: 0}
+    pairMelodyClean: {fileID: 8300000, guid: fffc4a05474ddcb438bf943fc6c83bef, type: 3}
+    pairMelodySlgithtlyDistorted: {fileID: 8300000, guid: a5c26be8dd87215479b777541ae4c405, type: 3}
+    pairMelodyHighlyDistorted: {fileID: 8300000, guid: 8a87fa1b7e437d94180cdbb2ce002e48, type: 3}
     isCollected: 0
   - door1: {fileID: 0}
     door2: {fileID: 0}
-    pairMelodyClean: {fileID: 0}
-    pairMelodySlgithtlyDistorted: {fileID: 0}
-    pairMelodyHighlyDistorted: {fileID: 0}
+    pairMelodyClean: {fileID: 8300000, guid: 3777cdedfa6200f42a5f4f5f3747ea41, type: 3}
+    pairMelodySlgithtlyDistorted: {fileID: 8300000, guid: dd331af11196abc41af2a68499ea6f6f, type: 3}
+    pairMelodyHighlyDistorted: {fileID: 8300000, guid: 686655cfa13934c49aae707d6bd4f93d, type: 3}
     isCollected: 0
   audioManager: {fileID: 6660729431149655374}
   maxTimer: 30
