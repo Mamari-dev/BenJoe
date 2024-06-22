@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void TestPairID(PairID newPairID, PanoramaPart panoramaPart)
+    public bool TestPairID(PairID newPairID, PanoramaPart panoramaPart)
     {
         //neuer try
         if (currentPairID == PairID.None)
@@ -60,23 +60,21 @@ public class GameManager : MonoBehaviour
             currentPairID = newPairID;
             currentPanoramaPart = panoramaPart;
             StartTimer();
-            return;
+            return false;
         }
 
         //memory abgleichen
-        if(currentPairID == newPairID)
+        if(currentPairID == newPairID && currentPanoramaPart != panoramaPart)
         {
             //player found right pair in time
             FoundInTime();
-            currentPairID = PairID.None;
-            currentPanoramaPart = PanoramaPart.None;
+            return false;
         }
         else
         {
             //player found wrong pair in time
             WrongInTime();
-            currentPairID = PairID.None;
-            currentPanoramaPart = PanoramaPart.None;
+            return true;
         }
     }
 
@@ -104,6 +102,12 @@ public class GameManager : MonoBehaviour
         audioManager.StartIdleSounds();
 
         currentPairID = PairID.None;
+        currentPanoramaPart = PanoramaPart.None;
+
+        if (WinCheck())
+        {
+            //das passiert beim gewinnen!!!!
+        }
     }
 
     private void WrongInTime()
@@ -117,7 +121,11 @@ public class GameManager : MonoBehaviour
         audioManager.PlayIncorrectSound();
         audioManager.StartIdleSounds();
 
+        //make first door interactable again
+        doorPairs[(int)currentPairID - 1].MakeInteractable();
+
         currentPairID = PairID.None;
+        currentPanoramaPart = PanoramaPart.None;
     }
 
     private void RanOutOfTime()
@@ -131,11 +139,28 @@ public class GameManager : MonoBehaviour
         audioManager.PlayIncorrectSound();
         audioManager.StartIdleSounds();
 
+        //make first door interactable again
+        doorPairs[(int)currentPairID - 1].MakeInteractable();
+
         currentPairID = PairID.None;
+        currentPanoramaPart = PanoramaPart.None;
     }
 
     public void Ouch(float ouchAmount)
     {
         timer -= ouchAmount;
+    }
+
+    private bool WinCheck()
+    {
+        foreach(DoorPairStruct pair in doorPairs)
+        {
+            if (!pair.IsCollected)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

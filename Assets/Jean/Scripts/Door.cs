@@ -7,14 +7,24 @@ public class Door : MonoBehaviour, IInteract
     [SerializeField] private PairID pairID;
     [SerializeField] private PanoramaPart panoramaPart;
 
+    private bool interactable;
+
     public void Interact()
     {
-        GameManager.Instance.TestPairID(pairID, panoramaPart);
+        if (interactable)
+        {
+            interactable = GameManager.Instance.TestPairID(pairID, panoramaPart);
+        }
+    }
+
+    public void SetInteractable(bool isInteractable)
+    {
+        interactable = isInteractable;
     }
 
     public void OpenDoor()
     {
-
+        interactable = false;
     }
 
 
