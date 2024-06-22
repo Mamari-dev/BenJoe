@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Enemy : Pathfinding
+public class Enemy : EnemyAudio
 {
-    [SerializeField] private Transform enemyContainer;
+    private Transform enemyContainer;
     [SerializeField] private LayerMask combinedLayerMask;
     [SerializeField] private float damage;
     private bool isPlayerInRange = false;
