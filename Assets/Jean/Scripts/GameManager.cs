@@ -12,10 +12,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float maxTimer;
     private float timer;
     private bool timerIsRunning = false;
-    
+
+    public float Timer { get => timer; }
+    public bool TimerIsRunning { get => timerIsRunning; }
+
     private PairID currentPairID = PairID.None;
     private PanoramaPart currentPanoramaPart = PanoramaPart.None;
     private DistortionLevel currentDistortionLevel = DistortionLevel.None;
+
+
 
     private void Awake()
     {
@@ -31,22 +36,22 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (timerIsRunning)
+        if (TimerIsRunning)
         {
-            timer -= Time.deltaTime;
+            Timer -= Time.deltaTime;
 
-            if(timer < maxTimer * 2 / 3 && currentDistortionLevel == DistortionLevel.None)
+            if(Timer < maxTimer * 2 / 3 && currentDistortionLevel == DistortionLevel.None)
             {
                 currentDistortionLevel = DistortionLevel.Slightly;
                 audioManager.ChangeMelodyDistortion(currentDistortionLevel);
             }
-            else if (timer < maxTimer * 1 / 3 && currentDistortionLevel == DistortionLevel.Slightly)
+            else if (Timer < maxTimer * 1 / 3 && currentDistortionLevel == DistortionLevel.Slightly)
             {
                 currentDistortionLevel = DistortionLevel.Highly;
                 audioManager.ChangeMelodyDistortion(currentDistortionLevel);
             }
         }
-        if(timer <= 0)
+        if(Timer <= 0)
         {
              RanOutOfTime();
         }
@@ -80,8 +85,10 @@ public class GameManager : MonoBehaviour
 
     private void StartTimer()
     {
-        timer += maxTimer;
-        timerIsRunning = true;
+        EnemyManager.Instance.ResetEnemy();
+
+        Timer += maxTimer;
+        TimerIsRunning = true;
 
         //stop environment + Adlibs
         audioManager.StopIdleSounds();
@@ -91,8 +98,10 @@ public class GameManager : MonoBehaviour
 
     private void FoundInTime()
     {
-        timerIsRunning = false;
-        timer = 0;
+        EnemyManager.Instance.ResetEnemy();
+
+        TimerIsRunning = false;
+        Timer = 0;
         doorPairs[(int)currentPairID - 1].OpenPair();
 
         //stop melody
@@ -112,8 +121,10 @@ public class GameManager : MonoBehaviour
 
     private void WrongInTime()
     {
-        timerIsRunning = false;
-        timer = 0;
+        EnemyManager.Instance.ResetEnemy();
+
+        TimerIsRunning = false;
+        Timer = 0;
 
         //stop melody
         audioManager.StopMelodySounds();
@@ -130,8 +141,11 @@ public class GameManager : MonoBehaviour
 
     private void RanOutOfTime()
     {
-        timerIsRunning = false;
-        timer = 0;
+        EnemyManager.Instance.ResetEnemy();
+
+
+        TimerIsRunning = false;
+        Timer = 0;
 
         //stop melody
         audioManager.StopMelodySounds();
@@ -148,7 +162,7 @@ public class GameManager : MonoBehaviour
 
     public void Ouch(float ouchAmount)
     {
-        timer -= ouchAmount;
+        Timer -= ouchAmount;
     }
 
     private bool WinCheck()
