@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - EnemyContainer
+  - Door
   layers:
   - Default
   - TransparentFX

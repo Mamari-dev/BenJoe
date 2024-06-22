@@ -51,41 +51,49 @@ MonoBehaviour:
     pairMelodyClean: {fileID: 0}
     pairMelodySlgithtlyDistorted: {fileID: 0}
     pairMelodyHighlyDistorted: {fileID: 0}
+    isCollected: 0
   - door1: {fileID: 0}
     door2: {fileID: 0}
     pairMelodyClean: {fileID: 0}
     pairMelodySlgithtlyDistorted: {fileID: 0}
     pairMelodyHighlyDistorted: {fileID: 0}
+    isCollected: 0
   - door1: {fileID: 0}
     door2: {fileID: 0}
     pairMelodyClean: {fileID: 0}
     pairMelodySlgithtlyDistorted: {fileID: 0}
     pairMelodyHighlyDistorted: {fileID: 0}
+    isCollected: 0
   - door1: {fileID: 0}
     door2: {fileID: 0}
     pairMelodyClean: {fileID: 0}
     pairMelodySlgithtlyDistorted: {fileID: 0}
     pairMelodyHighlyDistorted: {fileID: 0}
+    isCollected: 0
   - door1: {fileID: 0}
     door2: {fileID: 0}
     pairMelodyClean: {fileID: 0}
     pairMelodySlgithtlyDistorted: {fileID: 0}
     pairMelodyHighlyDistorted: {fileID: 0}
+    isCollected: 0
   - door1: {fileID: 0}
     door2: {fileID: 0}
     pairMelodyClean: {fileID: 0}
     pairMelodySlgithtlyDistorted: {fileID: 0}
     pairMelodyHighlyDistorted: {fileID: 0}
+    isCollected: 0
   - door1: {fileID: 0}
     door2: {fileID: 0}
     pairMelodyClean: {fileID: 0}
     pairMelodySlgithtlyDistorted: {fileID: 0}
     pairMelodyHighlyDistorted: {fileID: 0}
+    isCollected: 0
   - door1: {fileID: 0}
     door2: {fileID: 0}
     pairMelodyClean: {fileID: 0}
     pairMelodySlgithtlyDistorted: {fileID: 0}
     pairMelodyHighlyDistorted: {fileID: 0}
+    isCollected: 0
   audioManager: {fileID: 6660729431149655374}
   maxTimer: 30
 --- !u!1 &9161060128019682630
@@ -140,13 +148,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioListen:
   - name: Environment
-    audioClip: []
+    audioClip:
+    - {fileID: 8300000, guid: bef5e6bb54e857d4ea0a9b81a8bad948, type: 3}
+    - {fileID: 8300000, guid: edbb3eb14ae97814098a491ca0aef9d6, type: 3}
   - name: Adlibs
-    audioClip: []
+    audioClip:
+    - {fileID: 8300000, guid: 5bf2698db20444b4c86ed28a452a328f, type: 3}
+    - {fileID: 8300000, guid: 2d822fbfbea678340816fb609d3ec327, type: 3}
+    - {fileID: 8300000, guid: cb1fd00860d42b74cada74fff853ea5f, type: 3}
+    - {fileID: 8300000, guid: 1b9de2e9d72a17d4eb8fe8014eceed58, type: 3}
+    - {fileID: 8300000, guid: 970211a95272bb440a2726bde016fd60, type: 3}
+    - {fileID: 8300000, guid: 55faf0f826ec448488f7ab139e0befaf, type: 3}
+    - {fileID: 8300000, guid: c5f34b5918efe884f871af73388ade93, type: 3}
+    - {fileID: 8300000, guid: 3609220490b4d6e4096c649af77e8090, type: 3}
   - name: Win
-    audioClip: []
+    audioClip:
+    - {fileID: 8300000, guid: dc867d2e68f37fd48916b484a864a939, type: 3}
+    - {fileID: 8300000, guid: d9096f480d34fb64b961c253ee2f3e16, type: 3}
+    - {fileID: 8300000, guid: 5cca718ee2b17cc4b937e2eea47700d4, type: 3}
+    - {fileID: 8300000, guid: bab8ae05d703a3247a0dc46482ede734, type: 3}
+    - {fileID: 8300000, guid: 70b0a474f85e2f74fae913bb0e395bb9, type: 3}
   - name: Loose
-    audioClip: []
+    audioClip:
+    - {fileID: 8300000, guid: 47d972880331a0f408359cf3b3df4834, type: 3}
+    - {fileID: 8300000, guid: 092e7926146426c448cf501e67924e22, type: 3}
+    - {fileID: 8300000, guid: c68c297f67b9bc444bb8b5f17b755ca8, type: 3}
+    - {fileID: 8300000, guid: 95fd79c1b2d072a45835efedee1f9d98, type: 3}
+    - {fileID: 8300000, guid: 8df0bfcc42b8df44f8107d1003c748f6, type: 3}
+    - {fileID: 8300000, guid: b37cbc7f01a4d9a43901ed0d28a8507d, type: 3}
   audioSourceMelody: {fileID: 7455515828216380885}
   audioSourceMelodySlightly: {fileID: 3403640068173555831}
   audioSourceMelodyHighly: {fileID: 859902695592437071}
@@ -165,7 +194,7 @@ AudioSource:
   m_GameObject: {fileID: 9161060128019682630}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -990457289176288047, guid: 421f4203ce44c274ebd1a2cef3d76ff4, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -261,7 +290,7 @@ AudioSource:
   m_GameObject: {fileID: 9161060128019682630}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -990457289176288047, guid: 421f4203ce44c274ebd1a2cef3d76ff4, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -357,7 +386,7 @@ AudioSource:
   m_GameObject: {fileID: 9161060128019682630}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -990457289176288047, guid: 421f4203ce44c274ebd1a2cef3d76ff4, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -453,7 +482,7 @@ AudioSource:
   m_GameObject: {fileID: 9161060128019682630}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2721191016530833969, guid: 421f4203ce44c274ebd1a2cef3d76ff4, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -549,7 +578,7 @@ AudioSource:
   m_GameObject: {fileID: 9161060128019682630}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8618007139430422760, guid: 421f4203ce44c274ebd1a2cef3d76ff4, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -645,7 +674,7 @@ AudioSource:
   m_GameObject: {fileID: 9161060128019682630}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -4322039650808777836, guid: 421f4203ce44c274ebd1a2cef3d76ff4, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
