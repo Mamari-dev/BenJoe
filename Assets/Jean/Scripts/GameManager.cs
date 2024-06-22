@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
     private void StartTimer()
     {
         EnemyManager.Instance.ResetEnemy();
+        UIManager.Instance.CollectMemoryPartUI(currentPairID, currentPanoramaPart);
 
         timer += maxTimer;
         timerIsRunning = true;
@@ -99,6 +100,7 @@ public class GameManager : MonoBehaviour
     private void FoundInTime()
     {
         EnemyManager.Instance.ResetEnemy();
+        UIManager.Instance.CollectMemoryPairUI(true);
 
         timerIsRunning = false;
         timer = 0;
@@ -122,6 +124,7 @@ public class GameManager : MonoBehaviour
     private void WrongInTime()
     {
         EnemyManager.Instance.ResetEnemy();
+        UIManager.Instance.CollectMemoryPairUI(false);
 
         timerIsRunning = false;
         timer = 0;
@@ -142,6 +145,7 @@ public class GameManager : MonoBehaviour
     private void RanOutOfTime()
     {
         EnemyManager.Instance.ResetEnemy();
+        UIManager.Instance.CollectMemoryPairUI(false);
 
 
         timerIsRunning = false;
