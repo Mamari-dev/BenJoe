@@ -87,6 +87,15 @@ public class UIManager : MonoBehaviour
         CollectMemoryPart.Invoke(_pair, _part);
     }
 
+    /// <summary>
+    /// true = the second MemoryPart is collected || false = the first MemoryPart is Lost
+    /// </summary>
+    /// <param name="_collected"></param>
+    public void CollectMemoryPairUI(bool _collected)
+    {
+
+    }
+
     #region Input Handling
 
     public void OnEscape(InputAction.CallbackContext _context)
