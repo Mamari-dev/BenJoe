@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Player_MovementController : MonoBehaviour
+public class Player_MovementController : MonoBehaviour, ISlowable
 {
     [Header("Move Attributes:")]
     EDirection eMoveDirection;
@@ -18,27 +18,28 @@ public class Player_MovementController : MonoBehaviour
 
     void Awake() => currentMovementSpeed = movementSpeed;
 
+    void OnEnable() => player.AudioSource.Play();
+
     void Update()
     {
         if(!player.DashController.IsDashing)
+        {
             movementDirection = player.InputController.MoveDirection;
+
+            if (movementDirection == Vector2.zero && player.AudioSource.isPlaying)
+                player.AudioSource.Pause();
+            else if(movementDirection != Vector2.zero && !player.AudioSource.isPlaying)
+                player.AudioSource.Play();
+
+            player.AnimationController.SetDirection(movementDirection);
+        }
+
     }
 
     void FixedUpdate() => player.Rigidbody.velocity = movementDirection * currentMovementSpeed;
 
+    void OnDisable() => player.AudioSource.Pause();
+
     public void ChangeSpeed(float _speedMultiplicator) => currentMovementSpeed = movementSpeed * _speedMultiplicator;
-
-    public void ChangeSpeed(float _speedMultiplicator, float _duration)
-    {
-        currentMovementSpeed = movementSpeed * _speedMultiplicator;
-
-        StopAllCoroutines();
-        StartCoroutine(ResetSpeed(_duration));
-    }
-
-    IEnumerator ResetSpeed(float _duration)
-    {
-        yield return new WaitForSeconds(_duration);
-        currentMovementSpeed = movementSpeed;
-    }
+    public void ResetSpeed() => currentMovementSpeed = movementSpeed;
 }

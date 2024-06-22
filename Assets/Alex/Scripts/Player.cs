@@ -1,16 +1,33 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
-    [SerializeField] Rigidbody2D rb;
-
     [SerializeField] Player_InputController inputController;
+    [SerializeField] Character_AnimationController animationController;
+
     [SerializeField] Player_MovementController movementController;
     [SerializeField] Player_Dash dashController;
 
-    public Rigidbody2D Rigidbody => rb;
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] AudioSource audioSource;
+
 
     public Player_InputController InputController => inputController;
+    public Character_AnimationController AnimationController => animationController;
+
     public Player_MovementController MovementController => movementController;
     public Player_Dash DashController => dashController;
+
+    public Rigidbody2D Rigidbody => rb;
+    public AudioSource AudioSource => audioSource;
+
+    public void GetDamage(float value)
+    {
+        GameManager.Instance.Ouch(value);
+    }
+
+    public void GetEnemy(Transform enemyTransform)
+    {
+        throw new System.NotImplementedException();
+    }
 }
