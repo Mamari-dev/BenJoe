@@ -28,6 +28,9 @@ public class UIManager : MonoBehaviour
     public delegate void CollectMemoryPartEvent(PairID _pair, PanoramaPart _part);
     public event CollectMemoryPartEvent CollectMemoryPart;
 
+    public delegate void CollectMemoryPairEvent(bool _collected);
+    public event CollectMemoryPairEvent CollectMemoryPair;
+
     private void Awake()
     {
         // Destroy Instance when it is already existing, else create it
@@ -51,18 +54,12 @@ public class UIManager : MonoBehaviour
     {
         SetCursorType(_cursorType);
         SceneManager.LoadSceneAsync((int)_scene, _loadMode);
-
-        //if (_scene == Scenes.PauseMenu) Time.timeScale = 0f;    // Pause Game
-        //else if (_scene == Scenes.MainMenu) Time.timeScale = 1f;
     }
 
     public void UnloadSceneAsync(Scenes _scene, CursorTypes _cursorType = CursorTypes.UI)
     {
         SceneManager.UnloadSceneAsync((int)_scene);
         SetCursorType(_cursorType);
-
-        // Continue TimeScale if Pause is closed
-        //if (_scene == Scenes.PauseMenu) Time.timeScale = 1f;
     }
 
     public void SetCursorType(CursorTypes _cursorType)
@@ -93,7 +90,13 @@ public class UIManager : MonoBehaviour
     /// <param name="_collected"></param>
     public void CollectMemoryPairUI(bool _collected)
     {
+        CollectMemoryPair.Invoke(_collected);
+    }
 
+    private void OnDisable()
+    {
+        CollectMemoryPart = null;
+        CollectMemoryPair = null;
     }
 
     #region Input Handling
