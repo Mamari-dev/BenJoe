@@ -14,9 +14,14 @@ public class Enemy : Pathfinding
     private IDamageable damageable;
 
     [Header("Collider")]
-    [SerializeField] private CircleCollider2D enemyCollider;
+    [SerializeField] private Collider2D enemyCollider;
     [SerializeField] private CircleCollider2D hitPlayerTrigger;
     [SerializeField] private CircleCollider2D followPlayerTrigger;
+
+    [SerializeField] private Collider2D groundCollider;
+
+    [Space]
+    [SerializeField] Character_AnimationController animationController;
 
     protected override void OnEnable()
     {
@@ -24,11 +29,17 @@ public class Enemy : Pathfinding
         transform.SetParent(enemyContainer);
         transform.position = startPosition;
         enemyCollider.enabled = true;
+        groundCollider.enabled = true;
     }
 
     private void Start()
     {
         enemyContainer = GameObject.FindWithTag("EnemyContainer").transform;
+    }
+
+    private void Update()
+    {
+        animationController.SetDirection(rb.velocity);
     }
 
     private void FixedUpdate()
@@ -105,6 +116,7 @@ public class Enemy : Pathfinding
         rb.velocity = Vector2.zero;
         this.enabled = false;
         enemyCollider.enabled = false;
+        groundCollider.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

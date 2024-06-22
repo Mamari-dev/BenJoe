@@ -12,17 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
   m_Name: Canyon
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 0}
+  m_DefaultSprite: {fileID: 21300000, guid: bb778e9c528347b4883f61f001f5ae49, type: 3}
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 1
   m_TilingRules:
   - m_Id: 0
     m_Sprites:
-    - {fileID: 0}
+    - {fileID: 21300000, guid: bb778e9c528347b4883f61f001f5ae49, type: 3}
+    - {fileID: 21300000, guid: c80f79c41ee42864eaa5b3da7d57a206, type: 3}
+    - {fileID: 21300000, guid: d4dc1ba03314e6843a6e52dbf7447e91, type: 3}
+    - {fileID: 21300000, guid: dfd523e1964f8d44099f0cdae1de99bd, type: 3}
+    - {fileID: 21300000, guid: a1c209e2605fb92409ab6205d22455f0, type: 3}
+    - {fileID: 21300000, guid: cb6a21db3c033784d90c2ec0ffdd0780, type: 3}
+    - {fileID: 21300000, guid: bb778e9c528347b4883f61f001f5ae49, type: 3}
+    - {fileID: 21300000, guid: bb778e9c528347b4883f61f001f5ae49, type: 3}
+    - {fileID: 21300000, guid: bb778e9c528347b4883f61f001f5ae49, type: 3}
+    - {fileID: 21300000, guid: bb778e9c528347b4883f61f001f5ae49, type: 3}
+    - {fileID: 21300000, guid: bb778e9c528347b4883f61f001f5ae49, type: 3}
+    - {fileID: 21300000, guid: bb778e9c528347b4883f61f001f5ae49, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
-    m_PerlinScale: 0.5
+    m_PerlinScale: 0.947
     m_Output: 1
     m_ColliderType: 1
     m_RandomTransform: 0
