@@ -38,20 +38,20 @@ public class GameManager : MonoBehaviour
     {
         if (TimerIsRunning)
         {
-            Timer -= Time.deltaTime;
+            timer -= Time.deltaTime;
 
-            if(Timer < maxTimer * 2 / 3 && currentDistortionLevel == DistortionLevel.None)
+            if(timer < maxTimer * 2 / 3 && currentDistortionLevel == DistortionLevel.None)
             {
                 currentDistortionLevel = DistortionLevel.Slightly;
                 audioManager.ChangeMelodyDistortion(currentDistortionLevel);
             }
-            else if (Timer < maxTimer * 1 / 3 && currentDistortionLevel == DistortionLevel.Slightly)
+            else if (timer < maxTimer * 1 / 3 && currentDistortionLevel == DistortionLevel.Slightly)
             {
                 currentDistortionLevel = DistortionLevel.Highly;
                 audioManager.ChangeMelodyDistortion(currentDistortionLevel);
             }
         }
-        if(Timer <= 0)
+        if(timer <= 0)
         {
              RanOutOfTime();
         }
@@ -87,8 +87,8 @@ public class GameManager : MonoBehaviour
     {
         EnemyManager.Instance.ResetEnemy();
 
-        Timer += maxTimer;
-        TimerIsRunning = true;
+        timer += maxTimer;
+        timerIsRunning = true;
 
         //stop environment + Adlibs
         audioManager.StopIdleSounds();
@@ -100,8 +100,8 @@ public class GameManager : MonoBehaviour
     {
         EnemyManager.Instance.ResetEnemy();
 
-        TimerIsRunning = false;
-        Timer = 0;
+        timerIsRunning = false;
+        timer = 0;
         doorPairs[(int)currentPairID - 1].OpenPair();
 
         //stop melody
@@ -123,8 +123,8 @@ public class GameManager : MonoBehaviour
     {
         EnemyManager.Instance.ResetEnemy();
 
-        TimerIsRunning = false;
-        Timer = 0;
+        timerIsRunning = false;
+        timer = 0;
 
         //stop melody
         audioManager.StopMelodySounds();
@@ -144,8 +144,8 @@ public class GameManager : MonoBehaviour
         EnemyManager.Instance.ResetEnemy();
 
 
-        TimerIsRunning = false;
-        Timer = 0;
+        timerIsRunning = false;
+        timer = 0;
 
         //stop melody
         audioManager.StopMelodySounds();
@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
 
     public void Ouch(float ouchAmount)
     {
-        Timer -= ouchAmount;
+        timer -= ouchAmount;
     }
 
     private bool WinCheck()
