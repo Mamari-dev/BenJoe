@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pathfinding : MonoBehaviour
+public class Pathfinding : EnemyPool
 {
     [Header("Pathfinding")]
     [SerializeField] private float waypointDelay;
@@ -30,6 +30,11 @@ public class Pathfinding : MonoBehaviour
         startPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
         playerTransform = GameObject.FindWithTag("Player").transform;
+    }
+
+    protected virtual void OnEnable()
+    {
+        waypoints.Clear();
     }
 
     protected void GetWayPoints()
@@ -65,43 +70,45 @@ public class Pathfinding : MonoBehaviour
         //auserdem wegpunkt überprüfen ob eine wall im weg ist -> reycast zwischen wegpunkt und next wegpunkt? oder so currentpos und nextweg?
         if (!hasWaypoint && !moveToStart)
         {
+            Debug.Log("findwaypoint");
             FindNextWaypoint();
         }
         else if (moveToStart)
         {
+            Debug.Log("movetostart");
             MoveToStartPos();
         }
         else
         {
+            Debug.Log("MoveToWaypoint");
             MoveToWaypoint();
         }
     }
 
     private void FindNextWaypoint()
     {
-        if (waypoints.Count < 0)
+        if (waypoints.Count > 0)
         {
             int wayPointIndex = waypoints.Count - 1;
 
-            if (wayPointIndex < 0)
+            for (int i = wayPointIndex; i >= 0; i--)
             {
-                moveToStart = true;
-                return;
-            }
+                nextWaypoint = waypoints[i];
+                hasWaypoint = true;
+                break;
+                //if (CheckDistance(waypoints[i]))
+                //{
 
-            for (int i = wayPointIndex; i > 0; i--)
-            {
-                if (CheckDistance(waypoints[i]))
-                {
-                    nextWaypoint = waypoints[i];
-                    hasWaypoint = true;
-                    break;
-                }
-                else
-                {
-                    waypoints.RemoveAt(i);
-                }
+                //}
+                //else
+                //{
+                //    waypoints.RemoveAt(i);
+                //}
             }
+        }
+        else
+        {
+            moveToStart = true;
         }
     }
 
@@ -109,7 +116,6 @@ public class Pathfinding : MonoBehaviour
     {
         Vector2 currentPosition = transform.position;
         float distance = Vector2.Distance(currentPosition, nextWaypoint);
-
         if (distance < toleranzValue)
         {
             waypoints.RemoveAt(waypoints.Count - 1);
@@ -117,7 +123,8 @@ public class Pathfinding : MonoBehaviour
         }
         else
         {
-            Vector2 dir = (nextWaypoint - currentPosition).normalized;
+            Vector2 dir = nextWaypoint - currentPosition;
+            dir.Normalize();
             rb.velocity = moveSpeed * Time.fixedDeltaTime * dir;
         }
     }
@@ -135,7 +142,8 @@ public class Pathfinding : MonoBehaviour
         }
         else
         {
-            Vector2 dir = (nextWaypoint - currentPosition).normalized;
+            Vector2 dir = startPosition - currentPosition;
+            dir.Normalize();
             rb.velocity = moveSpeed * Time.fixedDeltaTime * dir;
         }
     }

@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    private void OnEnable()
+    {
+        AnimateButtonsIn();
+    }
+
     #region InputHandling
 
     /// <summary>
@@ -36,6 +41,37 @@ public class MainMenu : MonoBehaviour
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
 #endif
+    }
+
+    #endregion
+
+    #region Animations
+
+    [SerializeField] private GameObject[] buttons;
+    [SerializeField] private float animTime;
+
+    private void AnimateButtonsIn()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            if (i % 2 == 0)
+                AnimateOneButtonIn(i, true);    // animate one button from the right side
+            else
+                AnimateOneButtonIn(i, false);   // and the next one from the left side
+        }
+    }
+
+    private void AnimateOneButtonIn(int _idx, bool _right)
+    {
+        Transform endTransf = buttons[_idx].transform;
+
+        //buttons[_idx].transform.position.x =  // canvas width
+        LeanTween.moveX(buttons[_idx], endTransf.position.x, animTime);
+    }
+
+    private void AnimateButtonsOut()
+    {
+
     }
 
     #endregion
