@@ -79,6 +79,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void CollectMemoryPart(PairID _pair, PanoramaPart _part)
+    {
+
+    }
+
     #endregion
 
     #region Input Handling
