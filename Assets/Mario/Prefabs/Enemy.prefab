@@ -240,9 +240,18 @@ MonoBehaviour:
   toleranzValue: 0.025
   moveSpeed: 60
   audioSource: {fileID: 6647927108465750658}
+  clips:
+  - {fileID: 8300000, guid: d9d92a0f0a70c894a9bd84f5955d3cda, type: 3}
+  - {fileID: 8300000, guid: ab4196aaacb900f4ea7fc602290025cd, type: 3}
+  - {fileID: 8300000, guid: fd6e2b1d6d5562a4488ae89666c891f6, type: 3}
+  - {fileID: 8300000, guid: 140cd71c1b3796140aa7fbb11907edd6, type: 3}
+  - {fileID: 8300000, guid: 263d18cae53ea3d4293dd64117f55894, type: 3}
+  minSoundDelay: 3
+  maxSoundDelay: 6
   combinedLayerMask:
     serializedVersion: 2
     m_Bits: 3072
+  rayCastHeight: 0.45
   damage: 5
   enemyCollider: {fileID: 3465010267640284175}
   hitPlayerTrigger: {fileID: 1235545624896931906}
@@ -356,7 +365,7 @@ Transform:
   m_GameObject: {fileID: 3519916194459722690}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.12, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -373,10 +382,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4322039650808777836, guid: 421f4203ce44c274ebd1a2cef3d76ff4, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_PlayOnAwake: 1
+  m_Volume: 0.25
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

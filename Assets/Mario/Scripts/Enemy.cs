@@ -4,6 +4,7 @@ public class Enemy : EnemyAudio
 {
     private Transform enemyContainer;
     [SerializeField] private LayerMask combinedLayerMask;
+    [SerializeField] private float rayCastHeight;
     [SerializeField] private float damage;
     private bool isPlayerInRange = false;
 
@@ -37,10 +38,12 @@ public class Enemy : EnemyAudio
     private void Start()
     {
         enemyContainer = GameObject.FindWithTag("EnemyContainer").transform;
+        transform.SetParent(enemyContainer);
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         animationController.SetDirection(rb.velocity);
     }
 
@@ -48,7 +51,6 @@ public class Enemy : EnemyAudio
     {
         if (isPlayerInRange)
         {
-            Debug.Log(SeePlayer());
             if (SeePlayer())
             {
                 hasWaypoint = false;
@@ -76,28 +78,30 @@ public class Enemy : EnemyAudio
 
     private bool SeePlayer()
     {
-        dir = playerTransform.position - transform.position;
+        Vector2 tempPos = new Vector2(transform.position.x, transform.position.y + rayCastHeight);
+        Vector2 tempPlayerPos = playerTransform.position;
+        dir = tempPlayerPos - tempPos;
         Vector2 currentPosition = transform.position;
-        float distance = Vector2.Distance(currentPosition, playerTransform.position);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, distance, combinedLayerMask);
+        float distance = Vector2.Distance(currentPosition, tempPlayerPos);
+        RaycastHit2D hit = Physics2D.Raycast(tempPos, dir, distance, combinedLayerMask);
 
 
         if (hit.collider != null)
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.DrawRay(transform.position, dir, Color.green);
+                Debug.DrawRay(tempPos, dir, Color.green);
                 return true;
             }
             else
             {
-                Debug.DrawRay(transform.position, dir, Color.red);
+                Debug.DrawRay(tempPos, dir, Color.red);
                 return false;
             }
         }
         else
         {
-            Debug.DrawRay(transform.position, dir, Color.yellow);
+            Debug.DrawRay(tempPos, dir, Color.yellow);
             return false;
         }
     }
