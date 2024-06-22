@@ -7,8 +7,9 @@ public class Pathfinding : EnemyPool
     [Header("Pathfinding")]
     [SerializeField] private float waypointDelay;
     [SerializeField] private List<Vector2> waypoints = new();
+    private Stack<Vector2> waypointsStack = new();
     private Vector2 nextWaypoint;
-    private bool hasWaypoint = false;
+    protected bool hasWaypoint = false;
     private bool moveToStart = false;
     private float delayTimer = 0;
 
@@ -56,6 +57,7 @@ public class Pathfinding : EnemyPool
                 delayTimer = 0;
                 Vector2 currentPosition = transform.position;
                 waypoints.Add(currentPosition);
+                waypointsStack.Push(currentPosition);
                 return !followPlayer;
             }
         });
@@ -70,17 +72,14 @@ public class Pathfinding : EnemyPool
         //auserdem wegpunkt überprüfen ob eine wall im weg ist -> reycast zwischen wegpunkt und next wegpunkt? oder so currentpos und nextweg?
         if (!hasWaypoint && !moveToStart)
         {
-            Debug.Log("findwaypoint");
             FindNextWaypoint();
         }
         else if (moveToStart)
         {
-            Debug.Log("movetostart");
             MoveToStartPos();
         }
         else
         {
-            Debug.Log("MoveToWaypoint");
             MoveToWaypoint();
         }
     }
@@ -89,22 +88,8 @@ public class Pathfinding : EnemyPool
     {
         if (waypoints.Count > 0)
         {
-            int wayPointIndex = waypoints.Count - 1;
-
-            for (int i = wayPointIndex; i >= 0; i--)
-            {
-                nextWaypoint = waypoints[i];
-                hasWaypoint = true;
-                break;
-                //if (CheckDistance(waypoints[i]))
-                //{
-
-                //}
-                //else
-                //{
-                //    waypoints.RemoveAt(i);
-                //}
-            }
+            nextWaypoint = waypointsStack.Peek();
+            hasWaypoint = true;
         }
         else
         {
@@ -120,6 +105,7 @@ public class Pathfinding : EnemyPool
         {
             waypoints.RemoveAt(waypoints.Count - 1);
             hasWaypoint = false;
+            waypointsStack.Pop();
         }
         else
         {

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Enemy : Pathfinding
 {
+    [SerializeField] private Transform enemyContainer;
     [SerializeField] private LayerMask combinedLayerMask;
     [SerializeField] private float damage;
     private bool isPlayerInRange = false;
@@ -20,7 +21,14 @@ public class Enemy : Pathfinding
     protected override void OnEnable()
     {
         base.OnEnable();
+        transform.SetParent(enemyContainer);
         transform.position = startPosition;
+        enemyCollider.enabled = true;
+    }
+
+    private void Start()
+    {
+        enemyContainer = GameObject.FindWithTag("EnemyContainer").transform;
     }
 
     private void FixedUpdate()
@@ -29,6 +37,7 @@ public class Enemy : Pathfinding
         {
             if (SeePlayer())
             {
+                hasWaypoint = false;
                 FollowPlayer();
             }
             else
@@ -110,7 +119,7 @@ public class Enemy : Pathfinding
             if (collision.IsTouching(hitPlayerTrigger))
             {
                 HitPlayer();
-                //join pool
+                AddEnemyInPool(this);
             }
             if (collision.IsTouching(followPlayerTrigger))
             {
