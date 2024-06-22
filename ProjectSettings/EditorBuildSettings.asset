@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Maya/Scenes/MainMenu.unity
     guid: 0832fbbc0f20495478c34f48e1fc1081
   - enabled: 1
-    path: Assets/Maya/Scenes/Settings.unity
+    path: Assets/Maya/Scenes/Options.unity
     guid: ccadcc2a24460274fa3d1d2a5011b59c
   - enabled: 1
     path: Assets/Maya/Scenes/LoadingScreen.unity

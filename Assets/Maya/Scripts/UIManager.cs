@@ -7,10 +7,11 @@ using UnityEngine.SceneManagement;
 public enum Scenes
 {
     MainMenu = 0,
-    Settings,
+    Options,
     LoadingScreen,
     HUD,
-    PauseMenu
+    PauseMenu,
+    Game
 }
 
 
@@ -50,8 +51,8 @@ public class UIManager : MonoBehaviour
         SetCursorType(_cursorType);
         SceneManager.LoadSceneAsync((int)_scene, _loadMode);
 
-        if (_scene == Scenes.PauseMenu) Time.timeScale = 0f;    // Pause Game
-        else if (_scene == Scenes.MainMenu) Time.timeScale = 1f;
+        //if (_scene == Scenes.PauseMenu) Time.timeScale = 0f;    // Pause Game
+        //else if (_scene == Scenes.MainMenu) Time.timeScale = 1f;
     }
 
     public void UnloadSceneAsync(Scenes _scene, CursorTypes _cursorType = CursorTypes.UI)
@@ -60,7 +61,7 @@ public class UIManager : MonoBehaviour
         SetCursorType(_cursorType);
 
         // Continue TimeScale if Pause is closed
-        if (_scene == Scenes.PauseMenu) Time.timeScale = 1f;
+        //if (_scene == Scenes.PauseMenu) Time.timeScale = 1f;
     }
 
     public void SetCursorType(CursorTypes _cursorType)
@@ -86,11 +87,13 @@ public class UIManager : MonoBehaviour
     {
         if (_context.started)
         {
-            if (SceneManager.GetSceneByBuildIndex((int)Scenes.Settings).isLoaded) UnloadSceneAsync(Scenes.Settings);
+            // close
+            if (SceneManager.GetSceneByBuildIndex((int)Scenes.Options).isLoaded) UnloadSceneAsync(Scenes.Options);
             else if (SceneManager.GetSceneByBuildIndex((int)Scenes.PauseMenu).isLoaded) UnloadSceneAsync(Scenes.PauseMenu, CursorTypes.None);
+            
+            // open
+            else if (SceneManager.GetSceneByBuildIndex((int)Scenes.MainMenu).isLoaded) LoadSceneAsync(Scenes.Options, LoadSceneMode.Additive);
             else if (SceneManager.GetSceneByBuildIndex((int)Scenes.HUD).isLoaded) LoadSceneAsync(Scenes.PauseMenu, LoadSceneMode.Additive);
-
-            else if (SceneManager.GetSceneByBuildIndex((int)Scenes.MainMenu).isLoaded) LoadSceneAsync(Scenes.Settings, LoadSceneMode.Additive);
         }
     }
 
