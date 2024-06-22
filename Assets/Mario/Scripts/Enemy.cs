@@ -30,6 +30,8 @@ public class Enemy : Pathfinding
         transform.position = startPosition;
         enemyCollider.enabled = true;
         groundCollider.enabled = true;
+        rb.isKinematic = false;
+        rb.velocity = Vector2.zero;
     }
 
     private void Start()
@@ -46,6 +48,7 @@ public class Enemy : Pathfinding
     {
         if (isPlayerInRange)
         {
+            Debug.Log(SeePlayer());
             if (SeePlayer())
             {
                 hasWaypoint = false;
@@ -55,6 +58,8 @@ public class Enemy : Pathfinding
             {
                 followPlayer = false;
                 getWayPointsStarted = false;
+
+                MoveToStart();
             }
         }
         else
@@ -117,6 +122,7 @@ public class Enemy : Pathfinding
         this.enabled = false;
         enemyCollider.enabled = false;
         groundCollider.enabled = false;
+        rb.isKinematic = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
