@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (TimerIsRunning)
+        if (timerIsRunning)
         {
             timer -= Time.deltaTime;
 
@@ -50,10 +50,11 @@ public class GameManager : MonoBehaviour
                 currentDistortionLevel = DistortionLevel.Highly;
                 audioManager.ChangeMelodyDistortion(currentDistortionLevel);
             }
-        }
-        if(timer <= 0)
-        {
-             RanOutOfTime();
+
+            if (timer <= 0)
+            {
+                RanOutOfTime();
+            }
         }
     }
 

@@ -8,6 +8,8 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] Player_MovementController movementController;
     [SerializeField] Player_Dash dashController;
 
+    [SerializeField] Transform enemyContainer;
+
     [SerializeField] Rigidbody2D rb;
     [SerializeField] AudioSource audioSource;
 
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void GetEnemy(Transform enemyTransform)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("GetEnemy");
+        enemyTransform.SetParent(enemyContainer);
     }
 }

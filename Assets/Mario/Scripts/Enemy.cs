@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Enemy : Pathfinding
+public class Enemy : EnemyAudio
 {
-    [SerializeField] private Transform enemyContainer;
+    private Transform enemyContainer;
     [SerializeField] private LayerMask combinedLayerMask;
     [SerializeField] private float damage;
     private bool isPlayerInRange = false;
@@ -14,9 +14,14 @@ public class Enemy : Pathfinding
     private IDamageable damageable;
 
     [Header("Collider")]
-    [SerializeField] private CircleCollider2D enemyCollider;
+    [SerializeField] private Collider2D enemyCollider;
     [SerializeField] private CircleCollider2D hitPlayerTrigger;
     [SerializeField] private CircleCollider2D followPlayerTrigger;
+
+    [SerializeField] private Collider2D groundCollider;
+
+    [Space]
+    [SerializeField] Character_AnimationController animationController;
 
     protected override void OnEnable()
     {
@@ -24,6 +29,9 @@ public class Enemy : Pathfinding
         transform.SetParent(enemyContainer);
         transform.position = startPosition;
         enemyCollider.enabled = true;
+        groundCollider.enabled = true;
+        rb.isKinematic = false;
+        rb.velocity = Vector2.zero;
     }
 
     private void Start()
@@ -31,10 +39,16 @@ public class Enemy : Pathfinding
         enemyContainer = GameObject.FindWithTag("EnemyContainer").transform;
     }
 
+    private void Update()
+    {
+        animationController.SetDirection(rb.velocity);
+    }
+
     private void FixedUpdate()
     {
         if (isPlayerInRange)
         {
+            Debug.Log(SeePlayer());
             if (SeePlayer())
             {
                 hasWaypoint = false;
@@ -44,6 +58,8 @@ public class Enemy : Pathfinding
             {
                 followPlayer = false;
                 getWayPointsStarted = false;
+
+                MoveToStart();
             }
         }
         else
@@ -105,6 +121,8 @@ public class Enemy : Pathfinding
         rb.velocity = Vector2.zero;
         this.enabled = false;
         enemyCollider.enabled = false;
+        groundCollider.enabled = false;
+        rb.isKinematic = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

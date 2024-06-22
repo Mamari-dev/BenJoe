@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyPool : MonoBehaviour
 {
-    private Queue<Enemy> enemyQueue = new Queue<Enemy>();
+    private readonly Queue<Enemy> enemyQueue = new Queue<Enemy>();
 
     private void Start()
     {
