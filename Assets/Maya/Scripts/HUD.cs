@@ -9,6 +9,28 @@ public class HUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer = GameManager.Instance.Timer;
+        // GameManager.Instance.Timer;
+    }
+
+    private void OnEnable()
+    {
+        UIManager.Instance.CollectMemoryPart += CollectMemoryPart;
+        UIManager.Instance.CollectMemoryPair += CollectMemoryPair;
+    }
+
+    private void OnDisable()
+    {
+        UIManager.Instance.CollectMemoryPart -= CollectMemoryPart;
+        UIManager.Instance.CollectMemoryPair -= CollectMemoryPair;
+    }
+
+    private void CollectMemoryPart(PairID _pair, PanoramaPart _part)
+    {
+
+    }
+
+    public void CollectMemoryPair(bool _collected)
+    {
+
     }
 }
