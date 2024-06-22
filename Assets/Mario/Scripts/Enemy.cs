@@ -17,8 +17,9 @@ public class Enemy : Pathfinding
     [SerializeField] private CircleCollider2D hitPlayerTrigger;
     [SerializeField] private CircleCollider2D followPlayerTrigger;
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         transform.position = startPosition;
     }
 
@@ -38,11 +39,13 @@ public class Enemy : Pathfinding
         }
         else
         {
-            Debug.Log("moveback");
             followPlayer = false;
             getWayPointsStarted = false;
 
-            MoveToStart();
+            if ((Vector2)transform.position != startPosition)
+            {
+                MoveToStart();
+            }
         }
     }
 
@@ -107,6 +110,7 @@ public class Enemy : Pathfinding
             if (collision.IsTouching(hitPlayerTrigger))
             {
                 HitPlayer();
+                //join pool
             }
             if (collision.IsTouching(followPlayerTrigger))
             {
