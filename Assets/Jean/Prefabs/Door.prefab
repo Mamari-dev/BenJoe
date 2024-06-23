@@ -33,6 +33,7 @@ Transform:
   m_Children:
   - {fileID: 7562853785513922488}
   - {fileID: 4000475095723443280}
+  - {fileID: 8984026243831664544}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5031577572326635235
@@ -51,7 +52,7 @@ MonoBehaviour:
   pairID: 1
   panoramaPart: 1
   interactCollider: {fileID: 4138029111253103126}
-  boxCollider: {fileID: 7315880625476846317}
+  boxCollider: {fileID: 4096354712154471432}
   missingPart: {fileID: 4221951690859206655}
   panoSprite: {fileID: 3293171925504608388}
   fadeSpeed: 2
@@ -101,7 +102,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7562853785513922488}
   - component: {fileID: 4221951690859206655}
-  - component: {fileID: 7315880625476846317}
   m_Layer: 0
   m_Name: MissingPartObject
   m_TagString: Untagged
@@ -176,13 +176,45 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &7315880625476846317
+--- !u!1 &6069148183453427783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8984026243831664544}
+  - component: {fileID: 4096354712154471432}
+  m_Layer: 0
+  m_Name: Barrier
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8984026243831664544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6069148183453427783}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2907745083813313317}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &4096354712154471432
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3852341425703572158}
+  m_GameObject: {fileID: 6069148183453427783}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -208,10 +240,10 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.25}
+    pivot: {x: 0.5, y: 0.75}
     oldSize: {x: 2, y: 2}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5

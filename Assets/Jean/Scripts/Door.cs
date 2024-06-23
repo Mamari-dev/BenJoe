@@ -14,7 +14,7 @@ public class Door : MonoBehaviour, IInteract
     [SerializeField] private SpriteRenderer panoSprite;
     [SerializeField] private float fadeSpeed, moveInSpeed;
 
-    private bool interactable;
+    private bool interactable = true;
 
     private bool isOpened = false, fadeInPano = false, fadeOutPano = false;
 
