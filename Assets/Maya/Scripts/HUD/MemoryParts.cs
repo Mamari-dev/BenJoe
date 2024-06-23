@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MemoryParts : MonoBehaviour
 {
@@ -9,9 +10,8 @@ public class MemoryParts : MonoBehaviour
     [SerializeField] private PairID pair;
     [SerializeField] private PanoramaPart part;
 
-    private void OnEnable()
+    private void Start()
     {
-        picture = GetComponentInChildren<Transform>().gameObject;
         picture.SetActive(false);
     }
 
