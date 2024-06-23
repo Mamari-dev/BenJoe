@@ -11,6 +11,7 @@ public class HUD : MonoBehaviour
     [SerializeField] private CanvasGroup panoramaCanvas;
     [SerializeField] private float panoramaShowTimer = 2f;
     [SerializeField] private float panoramaFadeTimer = 2f;
+    [SerializeField] private float panoramaAlpha = 1f;
     [SerializeField] private MemoryParts[] memories;
     private MemoryParts currentMemory;
 
@@ -43,7 +44,7 @@ public class HUD : MonoBehaviour
 
     private IEnumerator OpenMemoryShort()
     {
-        LeanTween.alphaCanvas(panoramaCanvas, 1f, panoramaFadeTimer);
+        LeanTween.alphaCanvas(panoramaCanvas, panoramaAlpha, panoramaFadeTimer);
         yield return new WaitForSeconds(panoramaShowTimer);
         LeanTween.alphaCanvas(panoramaCanvas, 0f, panoramaFadeTimer);
     }

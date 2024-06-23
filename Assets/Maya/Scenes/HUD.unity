@@ -2595,7 +2595,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680989636}
   m_Enabled: 1
-  m_Alpha: 0.2
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -2782,6 +2782,7 @@ MonoBehaviour:
   panoramaCanvas: {fileID: 1680989640}
   panoramaShowTimer: 3
   panoramaFadeTimer: 1
+  panoramaAlpha: 1
   memories:
   - {fileID: 30819174}
   - {fileID: 364142814}
