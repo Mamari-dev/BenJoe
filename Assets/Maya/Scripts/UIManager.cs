@@ -13,7 +13,8 @@ public enum Scenes
     HUD,
     PauseMenu,
     Game,
-    GameEnemies
+    GameEnemies,
+    Nodes
 }
 
 

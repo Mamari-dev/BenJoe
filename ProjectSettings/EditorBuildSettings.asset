@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Mario/Scene/EnemyScene.unity
     guid: 35454abe0726c7a40aaec72f8e8420be
+  - enabled: 1
+    path: Assets/Alex/Notes.unity
+    guid: 08b635a8a55074a40a25be5b86c32c63
   m_configObjects: {}

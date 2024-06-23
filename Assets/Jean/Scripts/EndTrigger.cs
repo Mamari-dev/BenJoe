@@ -17,7 +17,7 @@ public class EndTrigger : MonoBehaviour
     private void OpenCreditScene()
     {
         // Credits müssen sich öffnen
-        UIManager.Instance.OpenMemoryUI();
+        UIManager.Instance.Endscreen();
         audioSource.Play(); 
     }
 }
