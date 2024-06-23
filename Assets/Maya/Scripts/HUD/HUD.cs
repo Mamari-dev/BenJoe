@@ -6,7 +6,10 @@ using UnityEngine;
 public class HUD : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timer;
-    [Space]
+
+    [Header("Memory")]
+    [SerializeField] private GameObject panorama;
+    [SerializeField] private float panoramaShowTimer = 2f;
     [SerializeField] private MemoryParts[] memories;
     private MemoryParts currentMemory;
 
@@ -18,15 +21,32 @@ public class HUD : MonoBehaviour
 
     private void OnEnable()
     {
+        panorama.SetActive(false);
+
         UIManager.Instance.CollectMemoryPart += CollectMemoryPart;
         UIManager.Instance.CollectMemoryPair += CollectMemoryPair;
+        UIManager.Instance.OpenMemory += OpenMemory;
     }
 
     private void OnDisable()
     {
         UIManager.Instance.CollectMemoryPart -= CollectMemoryPart;
         UIManager.Instance.CollectMemoryPair -= CollectMemoryPair;
+        UIManager.Instance.OpenMemory -= OpenMemory;
     }
+
+    private void OpenMemory()
+    {
+        StartCoroutine(OpenMemoryShort());
+    }
+
+    private IEnumerator OpenMemoryShort()
+    {
+        panorama.SetActive(true);
+        yield return new WaitForSeconds(panoramaShowTimer);
+        panorama.SetActive(false);
+    }
+
 
     private void CollectMemoryPart(PairID _pair, PanoramaPart _part)
     {
@@ -34,9 +54,10 @@ public class HUD : MonoBehaviour
         {
             currentMemory.ActivateMemory();
         }
-    }
 
-    public void CollectMemoryPair(bool _collected)
+        OpenMemory();
+    }
+    private void CollectMemoryPair(bool _collected)
     {
         if (_collected)
         {
@@ -52,6 +73,8 @@ public class HUD : MonoBehaviour
         }
 
         currentMemory = null;
+
+        OpenMemory();
     }
 
     private MemoryParts GetMemory(PairID _pair, PanoramaPart _part)

@@ -31,6 +31,9 @@ public class UIManager : MonoBehaviour
     public delegate void CollectMemoryPairEvent(bool _collected);
     public event CollectMemoryPairEvent CollectMemoryPair;
 
+    public delegate void OpenMemoryEvent();
+    public event OpenMemoryEvent OpenMemory;
+
     private void Awake()
     {
         // Destroy Instance when it is already existing, else create it
@@ -93,10 +96,16 @@ public class UIManager : MonoBehaviour
         CollectMemoryPair.Invoke(_collected);
     }
 
+    public void OpenMemoryUI()
+    {
+        OpenMemory.Invoke();
+    }
+
     private void OnDisable()
     {
         CollectMemoryPart = null;
         CollectMemoryPair = null;
+        OpenMemory = null;
     }
 
     #region Input Handling
