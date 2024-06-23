@@ -65,6 +65,7 @@ public class HUD : MonoBehaviour
 
     private IEnumerator OpenMemoryShort()
     {
+        Debug.Log("OpenMemory");
         LeanTween.alphaCanvas(panoramaCanvas, panoramaAlpha, panoramaFadeTimer);
         yield return new WaitForSeconds(panoramaShowTimer);
         LeanTween.alphaCanvas(panoramaCanvas, 0f, panoramaFadeTimer);

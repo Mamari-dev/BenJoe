@@ -89,6 +89,7 @@ public class UIManager : MonoBehaviour
 
     public void CollectMemoryPartUI(PairID _pair, PanoramaPart _part)
     {
+        Debug.Log("Collect");
         CollectMemoryPart.Invoke(_pair, _part);
     }
 
@@ -103,6 +104,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenMemoryUI()
     {
+        Debug.Log("Open pls");
         OpenMemory.Invoke();
     }
 
