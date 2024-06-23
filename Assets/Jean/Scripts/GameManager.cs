@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
         //stop environment + Adlibs
         audioManager.StopIdleSounds();
         //start music with Pair Id
+        Debug.Log("hi");
         audioManager.StartMelodyID(currentPairID);
     }
 
