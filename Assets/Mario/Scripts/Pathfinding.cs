@@ -36,6 +36,7 @@ public class Pathfinding : EnemyPool
     protected virtual void OnEnable()
     {
         waypoints.Clear();
+        waypointsStack.Clear();
     }
 
     protected void GetWayPoints()

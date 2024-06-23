@@ -4,7 +4,8 @@ public class Enemy : EnemyAudio
 {
     private Transform enemyContainer;
     [SerializeField] private LayerMask combinedLayerMask;
-    [SerializeField] private float rayCastHeight;
+    [SerializeField] private float myRayCastHeight;
+    [SerializeField] private float playerRayCastHeight;
     [SerializeField] private float damage;
     private bool isPlayerInRange = false;
 
@@ -14,10 +15,11 @@ public class Enemy : EnemyAudio
     //PlayerStuff
     private IDamageable damageable;
 
-    [Header("Collider")]
+    [Space]
     [SerializeField] private Collider2D enemyCollider;
-    [SerializeField] private CircleCollider2D hitPlayerTrigger;
+    [SerializeField] private Collider2D hitPlayerTrigger;
     [SerializeField] private CircleCollider2D followPlayerTrigger;
+    [SerializeField] private Animator animator;
 
     [SerializeField] private Collider2D groundCollider;
 
@@ -31,8 +33,10 @@ public class Enemy : EnemyAudio
         transform.position = startPosition;
         enemyCollider.enabled = true;
         groundCollider.enabled = true;
+        animator.enabled = true;
         rb.isKinematic = false;
         rb.velocity = Vector2.zero;
+        isPlayerInRange = false;
     }
 
     private void Start()
@@ -45,6 +49,7 @@ public class Enemy : EnemyAudio
     {
         base.Update();
         animationController.SetDirection(rb.velocity);
+        Debug.Log(rb.velocity);
     }
 
     private void FixedUpdate()
@@ -78,8 +83,8 @@ public class Enemy : EnemyAudio
 
     private bool SeePlayer()
     {
-        Vector2 tempPos = new Vector2(transform.position.x, transform.position.y + rayCastHeight);
-        Vector2 tempPlayerPos = playerTransform.position;
+        Vector2 tempPos = new Vector2(transform.position.x, transform.position.y + myRayCastHeight);
+        Vector2 tempPlayerPos = new Vector2(playerTransform.position.x, playerTransform.position.y + playerRayCastHeight);
         dir = tempPlayerPos - tempPos;
         Vector2 currentPosition = transform.position;
         float distance = Vector2.Distance(currentPosition, tempPlayerPos);
@@ -123,16 +128,18 @@ public class Enemy : EnemyAudio
         damageable.GetEnemy(this.transform);
         damageable.GetDamage(damage);
         rb.velocity = Vector2.zero;
-        this.enabled = false;
         enemyCollider.enabled = false;
         groundCollider.enabled = false;
         rb.isKinematic = true;
+        animator.enabled = false;
+        this.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            Debug.Log("spawntrigger");
             if (damageable == null)
             {
                 collision.gameObject.TryGetComponent(out damageable);
