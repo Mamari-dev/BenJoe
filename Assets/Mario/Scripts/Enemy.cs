@@ -37,6 +37,7 @@ public class Enemy : EnemyAudio
         rb.isKinematic = false;
         rb.velocity = Vector2.zero;
         isPlayerInRange = false;
+        hitPlayerTrigger.enabled = true;
     }
 
     protected override void Start()
@@ -126,6 +127,7 @@ public class Enemy : EnemyAudio
 
     private void HitPlayer()
     {
+        hitPlayerTrigger.enabled = false; 
         damageable.GetEnemy(this.transform);
         damageable.GetDamage(damage);
         rb.velocity = Vector2.zero;
