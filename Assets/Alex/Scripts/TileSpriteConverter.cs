@@ -7,10 +7,13 @@ public class TileSpriteConverter : MonoBehaviour
     [SerializeField] Tilemap tilemapToRead;
     [SerializeField] Sprite[] tileSpritesToConvert;
 
+    [Space]
+    [SerializeField] float spawnOffsetY;
+    [SerializeField] Tilemap tilemapObstacles;
+
+    [Space]
     [SerializeField] GameObject[] prefabToSpawn;
     [SerializeField] Transform colliderContainer;
-
-    [SerializeField] float spawnOffsetY;
 
     // Start is called before the first frame update
     void Start()
@@ -19,17 +22,28 @@ public class TileSpriteConverter : MonoBehaviour
         {
             for (int x = -200; x < 200; x++)
             {
-                Sprite currentSprite = tilemapToRead.GetSprite(new Vector3Int(x, y, 0));
+                Vector3Int cellPosition = new Vector3Int(x, y, 0);
 
+                //Canyon underneath
+                Sprite currentSprite = tilemapToRead.GetSprite(cellPosition);
                 if(currentSprite != null)
                 {
                     int indexOfSprite = Array.IndexOf(tileSpritesToConvert, currentSprite);
 
-                    if(indexOfSprite > 0)
+                    //CanyonHeight
+                    if(indexOfSprite >= 0)
                     {
-                        Debug.Log(new Vector3Int(x, y, 0) + " " + new Vector3(x, y, 0)); 
-                        
-                        Instantiate(prefabToSpawn[indexOfSprite - 1], tilemapToRead.CellToWorld(new Vector3Int(x, y, 0)) + new Vector3(0, spawnOffsetY, 0), Quaternion.identity, colliderContainer);
+                        //Just Edges
+                        if(indexOfSprite > 0)
+                        {
+                            Instantiate(prefabToSpawn[indexOfSprite], tilemapToRead.CellToWorld(cellPosition) + new Vector3(0, spawnOffsetY, 0), Quaternion.identity, colliderContainer);
+                        }
+
+
+                        TileBase obstacle = tilemapObstacles.GetTile(cellPosition);
+
+                        if(obstacle != null)
+                            Instantiate(prefabToSpawn[indexOfSprite], tilemapToRead.CellToWorld(cellPosition) + new Vector3(0, spawnOffsetY - 1.0f, 0), Quaternion.identity, colliderContainer);                        
                     }
                 }
             }
