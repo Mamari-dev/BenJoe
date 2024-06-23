@@ -29,6 +29,7 @@ public class HUD : MonoBehaviour
     private void OnEnable()
     {
         panoramaCanvas.alpha = 0f;
+        endscreen.gameObject.SetActive(false);
         endscreen.alpha = 0f;
 
         UIManager.Instance.CollectMemoryPart += CollectMemoryPart;
@@ -47,13 +48,13 @@ public class HUD : MonoBehaviour
 
     private void OpenEndscreen()
     {
-        StartCoroutine(OpenEndscreenShort());
+        endscreen.gameObject.SetActive(true);
+        LeanTween.alphaCanvas(panoramaCanvas, panoramaAlpha, endscreenFadeTimer);
+        UIManager.Instance.SetCursorType(CursorTypes.UI);
     }
 
-    private IEnumerator OpenEndscreenShort()
+    public void OnMainMenu()
     {
-        LeanTween.alphaCanvas(panoramaCanvas, panoramaAlpha, endscreenFadeTimer);
-        yield return new WaitForSeconds(endscreenShowTimer);
         UIManager.Instance.LoadSceneAsync(Scenes.MainMenu);
     }
 
