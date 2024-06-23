@@ -51,7 +51,6 @@ public class Enemy : EnemyAudio
     {
         base.Update();
         animationController.SetDirection(rb.velocity);
-        Debug.Log(rb.velocity);
     }
 
     private void FixedUpdate()

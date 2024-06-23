@@ -17,7 +17,6 @@ public class HUD : MonoBehaviour
 
     [Header("Endscreen")]
     [SerializeField] private CanvasGroup endscreen;
-    [SerializeField] private float endscreenShowTimer = 8f;
     [SerializeField] private float endscreenFadeTimer = 2f;
 
     // Update is called once per frame
@@ -49,7 +48,8 @@ public class HUD : MonoBehaviour
     private void OpenEndscreen()
     {
         endscreen.gameObject.SetActive(true);
-        LeanTween.alphaCanvas(panoramaCanvas, panoramaAlpha, endscreenFadeTimer);
+        //panoramaCanvas.alpha = 1f;
+        LeanTween.alphaCanvas(endscreen, 1f, endscreenFadeTimer);
         UIManager.Instance.SetCursorType(CursorTypes.UI);
     }
 

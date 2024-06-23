@@ -4151,7 +4151,6 @@ MonoBehaviour:
   - {fileID: 378346571}
   - {fileID: 1353460027}
   endscreen: {fileID: 35067826}
-  endscreenShowTimer: 10
   endscreenFadeTimer: 2
 --- !u!4 &1865838568
 Transform:
@@ -4323,7 +4322,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1885118932
 RectTransform:

@@ -238,7 +238,7 @@ MonoBehaviour:
   waypointDelay: 0.5
   waypoints: []
   toleranzValue: 0.05
-  moveSpeed: 440
+  moveSpeed: 220
   audioSource: {fileID: 6647927108465750658}
   clips:
   - {fileID: 8300000, guid: d9d92a0f0a70c894a9bd84f5955d3cda, type: 3}
