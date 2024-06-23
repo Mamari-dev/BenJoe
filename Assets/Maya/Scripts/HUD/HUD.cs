@@ -15,6 +15,11 @@ public class HUD : MonoBehaviour
     [SerializeField] private MemoryParts[] memories;
     private MemoryParts currentMemory;
 
+    [Header("Endscreen")]
+    [SerializeField] private CanvasGroup endscreen;
+    [SerializeField] private float endscreenShowTimer = 8f;
+    [SerializeField] private float endscreenFadeTimer = 2f;
+
     // Update is called once per frame
     void Update()
     {
@@ -24,10 +29,12 @@ public class HUD : MonoBehaviour
     private void OnEnable()
     {
         panoramaCanvas.alpha = 0f;
+        endscreen.alpha = 0f;
 
         UIManager.Instance.CollectMemoryPart += CollectMemoryPart;
         UIManager.Instance.CollectMemoryPair += CollectMemoryPair;
         UIManager.Instance.OpenMemory += OpenMemory;
+        UIManager.Instance.OpenEndscreen += OpenEndscreen;
     }
 
     private void OnDisable()
@@ -35,6 +42,19 @@ public class HUD : MonoBehaviour
         UIManager.Instance.CollectMemoryPart -= CollectMemoryPart;
         UIManager.Instance.CollectMemoryPair -= CollectMemoryPair;
         UIManager.Instance.OpenMemory -= OpenMemory;
+        UIManager.Instance.OpenEndscreen -= OpenEndscreen;
+    }
+
+    private void OpenEndscreen()
+    {
+        StartCoroutine(OpenEndscreenShort());
+    }
+
+    private IEnumerator OpenEndscreenShort()
+    {
+        LeanTween.alphaCanvas(panoramaCanvas, panoramaAlpha, endscreenFadeTimer);
+        yield return new WaitForSeconds(endscreenShowTimer);
+        UIManager.Instance.LoadSceneAsync(Scenes.MainMenu);
     }
 
     private void OpenMemory()

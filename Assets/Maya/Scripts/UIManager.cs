@@ -36,6 +36,9 @@ public class UIManager : MonoBehaviour
     public delegate void OpenMemoryEvent();
     public event OpenMemoryEvent OpenMemory;
 
+    public delegate void OpenEndscreenEvent();
+    public event OpenEndscreenEvent OpenEndscreen;
+
     private void Awake()
     {
         // Destroy Instance when it is already existing, else create it
@@ -103,11 +106,17 @@ public class UIManager : MonoBehaviour
         OpenMemory.Invoke();
     }
 
+    public void Endscreen()
+    {
+        OpenEndscreen.Invoke();
+    }
+
     private void OnDisable()
     {
         CollectMemoryPart = null;
         CollectMemoryPair = null;
         OpenMemory = null;
+        OpenEndscreen = null;
     }
 
     #region Input Handling
