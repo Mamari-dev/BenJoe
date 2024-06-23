@@ -10,6 +10,8 @@ public class TileSpriteConverter : MonoBehaviour
     [SerializeField] GameObject[] prefabToSpawn;
     [SerializeField] Transform colliderContainer;
 
+    [SerializeField] float spawnOffsetY;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +29,7 @@ public class TileSpriteConverter : MonoBehaviour
                     {
                         Debug.Log(new Vector3Int(x, y, 0) + " " + new Vector3(x, y, 0)); 
                         
-                        Instantiate(prefabToSpawn[indexOfSprite - 1], tilemapToRead.CellToWorld(new Vector3Int(x, y, 0)), Quaternion.identity, colliderContainer);
+                        Instantiate(prefabToSpawn[indexOfSprite - 1], tilemapToRead.CellToWorld(new Vector3Int(x, y, 0)) + new Vector3(0, spawnOffsetY, 0), Quaternion.identity, colliderContainer);
                     }
                 }
             }
