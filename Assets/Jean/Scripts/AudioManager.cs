@@ -167,7 +167,7 @@ public class AudioManager : MonoBehaviour
         audioSourceEnvironment.Stop();
         audioSourceAdLibs.Stop();
 
-        isIdeling = true;
+        isIdeling = false;
     }
 
     public void PlayCorrectSound()

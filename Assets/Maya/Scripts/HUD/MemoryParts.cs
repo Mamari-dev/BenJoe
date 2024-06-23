@@ -11,6 +11,7 @@ public class MemoryParts : MonoBehaviour
 
     private void OnEnable()
     {
+        picture = GetComponentInChildren<Transform>().gameObject;
         picture.SetActive(false);
     }
 
