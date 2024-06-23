@@ -36,6 +36,9 @@ public class UIManager : MonoBehaviour
     public delegate void OpenMemoryEvent();
     public event OpenMemoryEvent OpenMemory;
 
+    public delegate void OpenEndscreenEvent();
+    public event OpenEndscreenEvent OpenEndscreen;
+
     private void Awake()
     {
         // Destroy Instance when it is already existing, else create it
@@ -86,6 +89,7 @@ public class UIManager : MonoBehaviour
 
     public void CollectMemoryPartUI(PairID _pair, PanoramaPart _part)
     {
+        Debug.Log("Collect");
         CollectMemoryPart.Invoke(_pair, _part);
     }
 
@@ -100,7 +104,13 @@ public class UIManager : MonoBehaviour
 
     public void OpenMemoryUI()
     {
+        Debug.Log("Open pls");
         OpenMemory.Invoke();
+    }
+
+    public void Endscreen()
+    {
+        OpenEndscreen.Invoke();
     }
 
     private void OnDisable()
@@ -108,6 +118,7 @@ public class UIManager : MonoBehaviour
         CollectMemoryPart = null;
         CollectMemoryPair = null;
         OpenMemory = null;
+        OpenEndscreen = null;
     }
 
     #region Input Handling

@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Maya/Scenes/PauseMenu.unity
     guid: 27d38c1c0ff49d241a30784342f0bf67
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
-    guid: 1ea4aa034bd11524d91efc256ca06b72
+    path: Assets/Alex/Alex Game.unity
+    guid: 8a8b51f4b506c7b43bffcd97d9630b1e
+  - enabled: 1
+    path: Assets/Mario/Scene/EnemyScene.unity
+    guid: 35454abe0726c7a40aaec72f8e8420be
   m_configObjects: {}

@@ -25,17 +25,22 @@ public class Pathfinding : EnemyPool
     protected Vector2 startPosition;
     protected bool followPlayer = false;
 
+    protected override void Start()
+    {
+        base.Start();
+        playerTransform = GameObject.FindWithTag("Player").transform;
+    }
 
     private void Awake()
     {
         startPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
-        playerTransform = GameObject.FindWithTag("Player").transform;
     }
 
     protected virtual void OnEnable()
     {
         waypoints.Clear();
+        waypointsStack.Clear();
     }
 
     protected void GetWayPoints()

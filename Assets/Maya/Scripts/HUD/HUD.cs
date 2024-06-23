@@ -8,10 +8,17 @@ public class HUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timer;
 
     [Header("Memory")]
-    [SerializeField] private GameObject panorama;
+    [SerializeField] private CanvasGroup panoramaCanvas;
     [SerializeField] private float panoramaShowTimer = 2f;
+    [SerializeField] private float panoramaFadeTimer = 2f;
+    [SerializeField] private float panoramaAlpha = 1f;
     [SerializeField] private MemoryParts[] memories;
     private MemoryParts currentMemory;
+
+    [Header("Endscreen")]
+    [SerializeField] private CanvasGroup endscreen;
+    [SerializeField] private float endscreenShowTimer = 8f;
+    [SerializeField] private float endscreenFadeTimer = 2f;
 
     // Update is called once per frame
     void Update()
@@ -21,11 +28,14 @@ public class HUD : MonoBehaviour
 
     private void OnEnable()
     {
-        panorama.SetActive(false);
+        panoramaCanvas.alpha = 0f;
+        endscreen.gameObject.SetActive(false);
+        endscreen.alpha = 0f;
 
         UIManager.Instance.CollectMemoryPart += CollectMemoryPart;
         UIManager.Instance.CollectMemoryPair += CollectMemoryPair;
         UIManager.Instance.OpenMemory += OpenMemory;
+        UIManager.Instance.OpenEndscreen += OpenEndscreen;
     }
 
     private void OnDisable()
@@ -33,6 +43,19 @@ public class HUD : MonoBehaviour
         UIManager.Instance.CollectMemoryPart -= CollectMemoryPart;
         UIManager.Instance.CollectMemoryPair -= CollectMemoryPair;
         UIManager.Instance.OpenMemory -= OpenMemory;
+        UIManager.Instance.OpenEndscreen -= OpenEndscreen;
+    }
+
+    private void OpenEndscreen()
+    {
+        endscreen.gameObject.SetActive(true);
+        LeanTween.alphaCanvas(panoramaCanvas, panoramaAlpha, endscreenFadeTimer);
+        UIManager.Instance.SetCursorType(CursorTypes.UI);
+    }
+
+    public void OnMainMenu()
+    {
+        UIManager.Instance.LoadSceneAsync(Scenes.MainMenu);
     }
 
     private void OpenMemory()
@@ -42,9 +65,10 @@ public class HUD : MonoBehaviour
 
     private IEnumerator OpenMemoryShort()
     {
-        panorama.SetActive(true);
+        Debug.Log("OpenMemory");
+        LeanTween.alphaCanvas(panoramaCanvas, panoramaAlpha, panoramaFadeTimer);
         yield return new WaitForSeconds(panoramaShowTimer);
-        panorama.SetActive(false);
+        LeanTween.alphaCanvas(panoramaCanvas, 0f, panoramaFadeTimer);
     }
 
 

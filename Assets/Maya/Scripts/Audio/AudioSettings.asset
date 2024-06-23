@@ -21,13 +21,13 @@ MonoBehaviour:
     volume: 0
   - audioType: 1
     audioOn: 1
-    volume: -30.33787
+    volume: 0
   - audioType: 2
-    audioOn: 0
+    audioOn: 1
     volume: 0
   - audioType: 3
-    audioOn: 0
+    audioOn: 1
     volume: 0
   - audioType: 4
-    audioOn: 0
+    audioOn: 1
     volume: 0
