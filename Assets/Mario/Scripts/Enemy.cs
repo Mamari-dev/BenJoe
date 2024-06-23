@@ -39,8 +39,9 @@ public class Enemy : EnemyAudio
         isPlayerInRange = false;
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         enemyContainer = GameObject.FindWithTag("EnemyContainer").transform;
         transform.SetParent(enemyContainer);
     }

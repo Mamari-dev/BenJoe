@@ -6,7 +6,7 @@ public class EnemyPool : MonoBehaviour
 {
     private readonly Queue<Enemy> enemyQueue = new Queue<Enemy>();
 
-    private void Start()
+    protected virtual void Start()
     {
         EnemyManager.Instance.ResetEnemyEvent += ResetEnemy;
     }

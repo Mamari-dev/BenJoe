@@ -124,7 +124,7 @@ public class LoadingScreen : MonoBehaviour
     {
         if (sceneToLoad == Scenes.Game)
         {
-            if(SceneManager.sceneCount > (int)Scenes.GameEnemies)
+            //if(SceneManager.sceneCount > (int)Scenes.GameEnemies)
                 UIManager.Instance.LoadSceneAsync(Scenes.GameEnemies, LoadSceneMode.Additive, CursorTypes.None);
             UIManager.Instance.LoadSceneAsync(Scenes.HUD, LoadSceneMode.Additive, CursorTypes.None);
             return true;
