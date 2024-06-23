@@ -10,13 +10,16 @@ public class Player_InputController : MonoBehaviour
     Vector2 moveDirection;
 
     //bool isActivelyAiming;
-    Vector2 aimDirection;
+    //Vector2 aimDirection;
 
-    bool holdAttack;
+    bool pressAction;
+    public bool PressAction => pressAction;
+
+    //bool holdAttack;
 
     public Vector2 MoveDirection => moveDirection;
-    public Vector2 AimDirection => aimDirection;
-    public bool HoldAttack => holdAttack;
+    //public Vector2 AimDirection => aimDirection;
+    //public bool HoldAttack => holdAttack;
 
 
     //public void OnControlsChanged(PlayerInput _input)
@@ -54,6 +57,15 @@ public class Player_InputController : MonoBehaviour
         if (_inputPhase.performed)
             StartCoroutine(player.DashController.StartDash());
     }
+
+    public void OnAction(InputAction.CallbackContext _inputPhase)
+    {
+        if (_inputPhase.performed)
+            pressAction = true;
+        else if(_inputPhase.canceled)
+            pressAction= false;
+    }
+
     //
     //public void OnAttack(InputAction.CallbackContext _inputPhase)
     //{
