@@ -8,10 +8,12 @@ public enum Scenes
 {
     MainMenu = 0,
     Options,
+    Credits,
     LoadingScreen,
     HUD,
     PauseMenu,
-    Game
+    Game,
+    GameEnemies
 }
 
 

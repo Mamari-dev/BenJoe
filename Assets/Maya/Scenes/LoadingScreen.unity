@@ -1186,10 +1186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a11f23e40118314a93526d26a5d03c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: 5
+  sceneToLoad: 6
   cursorToLoad: 0
   loadDelay: 0.5
-  minLoadingTime: 3
+  minLoadingTime: 2
   loadingBar: {fileID: 231138263}
   icon: {fileID: 1042384018}
   barLeft: {fileID: 1322050786}
