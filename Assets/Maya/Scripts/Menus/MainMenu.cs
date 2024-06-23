@@ -30,6 +30,14 @@ public class MainMenu : MonoBehaviour
     }
 
     /// <summary>
+    /// Load Credits Menu Additive
+    /// </summary>
+    public void OnCredits()
+    {
+        UIManager.Instance.LoadSceneAsync(Scenes.Credits, LoadSceneMode.Additive, CursorTypes.UI);
+    }
+
+    /// <summary>
     /// Close the Game or Exit Playmode if in Unity
     /// </summary>
     public void OnExitGame()
