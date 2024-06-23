@@ -8,8 +8,9 @@ public class HUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timer;
 
     [Header("Memory")]
-    [SerializeField] private GameObject panorama;
+    [SerializeField] private CanvasGroup panoramaCanvas;
     [SerializeField] private float panoramaShowTimer = 2f;
+    [SerializeField] private float panoramaFadeTimer = 2f;
     [SerializeField] private MemoryParts[] memories;
     private MemoryParts currentMemory;
 
@@ -21,7 +22,7 @@ public class HUD : MonoBehaviour
 
     private void OnEnable()
     {
-        panorama.SetActive(false);
+        panoramaCanvas.alpha = 0f;
 
         UIManager.Instance.CollectMemoryPart += CollectMemoryPart;
         UIManager.Instance.CollectMemoryPair += CollectMemoryPair;
@@ -42,9 +43,9 @@ public class HUD : MonoBehaviour
 
     private IEnumerator OpenMemoryShort()
     {
-        panorama.SetActive(true);
+        LeanTween.alphaCanvas(panoramaCanvas, 1f, panoramaFadeTimer);
         yield return new WaitForSeconds(panoramaShowTimer);
-        panorama.SetActive(false);
+        LeanTween.alphaCanvas(panoramaCanvas, 0f, panoramaFadeTimer);
     }
 
 
